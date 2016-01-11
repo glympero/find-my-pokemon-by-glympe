@@ -10,9 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        for subView in self.searchBar.subviews
+        {
+            for subsubView in subView.subviews
+            {
+                if let textField = subsubView as? UITextField
+                {
+//                    textField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search", comment: ""), attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+//                    
+//                    textField.textColor = UIColor.whiteColor()
+                    if textField.respondsToSelector(Selector("attributedPlaceholder")) {
+                        
+                        let attributeDict = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+                        textField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
+                        textField.textColor = UIColor.whiteColor()
+                        textField.font = UIFont(name: "Helvetica Neue", size: 16)
+                    }
+                    
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
