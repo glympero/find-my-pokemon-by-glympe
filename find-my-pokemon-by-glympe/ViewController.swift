@@ -14,15 +14,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        customiseMySearchBar()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    func customiseMySearchBar(){
         for subView in self.searchBar.subviews
         {
             for subsubView in subView.subviews
             {
                 if let textField = subsubView as? UITextField
                 {
-//                    textField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Search", comment: ""), attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-//                    
-//                    textField.textColor = UIColor.whiteColor()
+                    textField.textColor = UIColor.whiteColor()
                     if textField.respondsToSelector(Selector("attributedPlaceholder")) {
                         
                         let attributeDict = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -34,13 +51,8 @@ class ViewController: UIViewController {
                 }
             }
         }
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 
 }
 
