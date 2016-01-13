@@ -43,5 +43,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pokemon_Hollow.ttf</string>
+		<string>Pokemon_Solid.ttf</string>
+	</array>
 </dict>
 </plist>
