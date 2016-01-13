@@ -9,26 +9,30 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collection: UICollectionView!
     
     var pokemon = [Pokemon]()
+    var filteredPokemon = [Pokemon]()
     var musicPlayer: AVAudioPlayer!
+    var inSearchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
         
         initAudio()
         parsePokemonCSV()
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        customiseMySearchBar()
-//    }
+    override func viewDidAppear(animated: Bool) {
+        customiseMySearchBar()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,10 +45,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as? PokemonCell{
             //let pokemon = Pokemon(name: "Test", pokedexId: (indexPath.row + 1))
             //Grab current pokemon from array
-            let poke = pokemon[indexPath.row]
+            let poke: Pokemon!
+            
+            if inSearchMode {
+                poke = filteredPokemon[indexPath.row]
+            } else {
+                poke = pokemon[indexPath.row]
+            }
+            
+            
+            
             cell.configureCell(poke)
-            return cell
-        }else{
+            return cell        }else{
             return UICollectionViewCell()
         }
     }
@@ -52,7 +64,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let poke: Pokemon!
         
+        if inSearchMode {
+            poke = filteredPokemon[indexPath.row]
+        } else {
             poke = pokemon[indexPath.row]
+        }
         
         print(poke.name)
         performSegueWithIdentifier("Pokemon", sender: poke)
@@ -60,6 +76,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //number of items in each section(view)
+        if inSearchMode {
+            return filteredPokemon.count
+        }
+        
         return pokemon.count
     }
     
@@ -113,6 +133,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }catch let err as NSError{
             print(err.debugDescription)
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            collection.reloadData()
+        } else {
+            inSearchMode = true
+            let lower = searchBar.text!.lowercaseString
+            
+            filteredPokemon = pokemon.filter({$0.name.rangeOfString(lower) != nil})
+            collection.reloadData()
+        }
+    }
+    
+    func customiseMySearchBar(){
+        for subView in self.searchBar.subviews
+        {
+            for subsubView in subView.subviews
+            {
+                if let textField = subsubView as? UITextField
+                {
+                    textField.textColor = UIColor.whiteColor()
+                    if textField.respondsToSelector(Selector("attributedPlaceholder")) {
+                        
+                        let attributeDict = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+                        textField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
+                        textField.textColor = UIColor.whiteColor()
+                        textField.font = UIFont(name: "Helvetica Neue", size: 16)
+                    }
+                    
+                }
+            }
         }
     }
     
