@@ -19,6 +19,7 @@
 		F994C9601C4691E900E941C3 /* Pokemon_Hollow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F994C95E1C4691E900E941C3 /* Pokemon_Hollow.ttf */; };
 		F994C9611C4691E900E941C3 /* Pokemon_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F994C95F1C4691E900E941C3 /* Pokemon_Solid.ttf */; };
 		F994C9631C46966100E941C3 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F994C9621C46966100E941C3 /* music.mp3 */; };
+		F9F3837F1C46D31A00ED1F93 /* PokemonDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F3837E1C46D31A00ED1F93 /* PokemonDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F994C95E1C4691E900E941C3 /* Pokemon_Hollow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon_Hollow.ttf; sourceTree = "<group>"; };
 		F994C95F1C4691E900E941C3 /* Pokemon_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon_Solid.ttf; sourceTree = "<group>"; };
 		F994C9621C46966100E941C3 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		F9F3837E1C46D31A00ED1F93 /* PokemonDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				F96BBE681C43EDC5006807F2 /* ViewController.swift */,
+				F9F3837E1C46D31A00ED1F93 /* PokemonDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				F96BBE691C43EDC5006807F2 /* ViewController.swift in Sources */,
 				F96BBE811C4408AD006807F2 /* PokemonCell.swift in Sources */,
 				F96BBE671C43EDC5006807F2 /* AppDelegate.swift in Sources */,
+				F9F3837F1C46D31A00ED1F93 /* PokemonDetailVC.swift in Sources */,
 				F96BBE7C1C43F9E2006807F2 /* Pokemon.swift in Sources */,
 				F92A13691C45449C001872AA /* csv.swift in Sources */,
 			);

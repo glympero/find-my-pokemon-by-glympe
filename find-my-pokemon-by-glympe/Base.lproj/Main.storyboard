@@ -5,6 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </mutableArray>
         <mutableArray key="Pokemon_Solid.ttf">
             <string>PokemonSolidNormal</string>
         </mutableArray>
@@ -136,12 +139,31 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="GrY-Bv-b24" id="de6-kh-J5R"/>
-                        <outlet property="searchBar" destination="ZFn-hF-rNX" id="uuP-c3-RPm"/>
+                        <outlet property="searchBar" destination="ZFn-hF-rNX" id="p2U-Uh-Tdx"/>
+                        <segue destination="b9S-mR-Sio" kind="show" identifier="Pokemon" id="ZDD-vC-OHm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="404" y="615"/>
+        </scene>
+        <!--Pokemon DetailVC-->
+        <scene sceneID="u9N-U3-3hp">
+            <objects>
+                <viewController id="b9S-mR-Sio" customClass="PokemonDetailVC" customModule="find_my_pokemon_by_glympe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OIv-yG-F4l"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZRd-Q3-f2f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1So-PW-9tf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ppd-DN-GuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1100" y="615"/>
         </scene>
     </scenes>
     <resources>

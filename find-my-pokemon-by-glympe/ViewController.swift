@@ -26,9 +26,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         parsePokemonCSV()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        customiseMySearchBar()
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        customiseMySearchBar()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,8 +49,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let poke: Pokemon!
         
+            poke = pokemon[indexPath.row]
+        
+        print(poke.name)
+        performSegueWithIdentifier("Pokemon", sender: poke)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -111,22 +116,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func customiseMySearchBar(){
-        for subView in self.searchBar.subviews
-        {
-            for subsubView in subView.subviews
-            {
-                if let textField = subsubView as? UITextField
-                {
-                    textField.textColor = UIColor.whiteColor()
-                    if textField.respondsToSelector(Selector("attributedPlaceholder")) {
-                        
-                        let attributeDict = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-                        textField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
-                        textField.textColor = UIColor.whiteColor()
-                        textField.font = UIFont(name: "Helvetica Neue", size: 16)
-                    }
-                    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Pokemon" {
+            if let detailsVC = segue.destinationViewController as? PokemonDetailVC {
+                if let poke = sender as? Pokemon {
+                    detailsVC.pokemon = poke
                 }
             }
         }
