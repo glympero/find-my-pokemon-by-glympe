@@ -26,6 +26,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.Done
         
+        //Looks for single or multiple taps.
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        view.addGestureRecognizer(tap)
+        
         initAudio()
         parsePokemonCSV()
     }
@@ -152,6 +156,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             filteredPokemon = pokemon.filter({$0.name.rangeOfString(lower) != nil})
             collection.reloadData()
         }
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func customiseMySearchBar(){
