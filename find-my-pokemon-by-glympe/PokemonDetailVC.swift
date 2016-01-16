@@ -12,8 +12,8 @@ class PokemonDetailVC: UIViewController {
 
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var mainImg: UIImageView!
-    @IBOutlet weak var descriptionLbl: UILabel!
     
+    @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var typeLbl: UIStackView!
     @IBOutlet weak var defenseLbl: UIStackView!
     @IBOutlet weak var heightLbl: UILabel!
@@ -31,7 +31,13 @@ class PokemonDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLbl.text = pokemon.name
-        // Do any additional setup after loading the view.
+        mainImg.image = UIImage(named: "\(pokemon.pokedexId)")
+        pokemon.downloadPokemonDetails { () -> () in
+            //This will be called after download is done
+            
+           
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
