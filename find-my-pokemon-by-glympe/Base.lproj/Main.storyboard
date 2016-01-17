@@ -216,6 +216,9 @@
                                             <segment title="Moves"/>
                                         </segments>
                                         <color key="tintColor" red="0.78246950579503205" green="0.52075924447813193" blue="0.93844150641794877" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="indexChanged:" destination="b9S-mR-Sio" eventType="valueChanged" id="PbT-8S-QDk"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GA7-3A-i9u">
                                         <rect key="frame" x="0.0" y="49" width="560" height="120"/>
@@ -366,42 +369,74 @@
                                     <constraint firstItem="Q2b-Vv-QE8" firstAttribute="centerX" secondItem="na1-IJ-n2v" secondAttribute="centerX" id="pb8-ge-imx"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAb-o3-rXN">
+                                <rect key="frame" x="0.0" y="55" width="600" height="545"/>
+                                <subviews>
+                                    <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="65w-JJ-WVz">
+                                        <rect key="frame" x="282" y="254" width="37" height="37"/>
+                                        <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
+                                    </activityIndicatorView>
+                                    <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMC-TS-gtn">
+                                        <rect key="frame" x="260" y="233" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="jeB-l7-t8u"/>
+                                            <constraint firstAttribute="width" constant="80" id="pVe-JN-ZtQ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="JMC-TS-gtn" firstAttribute="centerY" secondItem="hAb-o3-rXN" secondAttribute="centerY" id="0Jd-Qa-T0t"/>
+                                    <constraint firstItem="65w-JJ-WVz" firstAttribute="centerY" secondItem="JMC-TS-gtn" secondAttribute="centerY" id="4aX-uf-ctn"/>
+                                    <constraint firstItem="65w-JJ-WVz" firstAttribute="centerX" secondItem="JMC-TS-gtn" secondAttribute="centerX" id="Xih-bd-Pig"/>
+                                    <constraint firstItem="JMC-TS-gtn" firstAttribute="centerX" secondItem="hAb-o3-rXN" secondAttribute="centerX" id="YBg-e4-hUy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="udn-dA-EnK" secondAttribute="trailing" id="2XI-cO-8qP"/>
                             <constraint firstItem="7ar-Xk-vq6" firstAttribute="top" secondItem="na1-IJ-n2v" secondAttribute="bottom" constant="8" id="CW0-uo-uj0"/>
                             <constraint firstItem="kbe-Rf-fI9" firstAttribute="top" secondItem="udn-dA-EnK" secondAttribute="bottom" constant="8" id="F0e-ou-kqa"/>
+                            <constraint firstItem="hAb-o3-rXN" firstAttribute="top" secondItem="udn-dA-EnK" secondAttribute="bottom" id="Gr4-Hh-I03"/>
                             <constraint firstItem="na1-IJ-n2v" firstAttribute="leading" secondItem="1So-PW-9tf" secondAttribute="leading" id="JKM-8N-3o0"/>
+                            <constraint firstItem="hAb-o3-rXN" firstAttribute="leading" secondItem="1So-PW-9tf" secondAttribute="leading" id="RsY-BG-Oi3"/>
                             <constraint firstItem="7ar-Xk-vq6" firstAttribute="leading" secondItem="1So-PW-9tf" secondAttribute="leadingMargin" id="Rxa-n9-3m6"/>
                             <constraint firstItem="udn-dA-EnK" firstAttribute="top" secondItem="1So-PW-9tf" secondAttribute="top" id="T7e-Bk-98R"/>
                             <constraint firstItem="ZRd-Q3-f2f" firstAttribute="top" secondItem="7ar-Xk-vq6" secondAttribute="bottom" constant="8" id="Vx2-cv-wCL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kbe-Rf-fI9" secondAttribute="trailing" id="cU7-zF-2h0"/>
                             <constraint firstAttribute="trailing" secondItem="na1-IJ-n2v" secondAttribute="trailing" id="eeB-el-To9"/>
+                            <constraint firstItem="ZRd-Q3-f2f" firstAttribute="top" secondItem="hAb-o3-rXN" secondAttribute="bottom" id="fZk-7K-06J"/>
                             <constraint firstItem="kbe-Rf-fI9" firstAttribute="leading" secondItem="1So-PW-9tf" secondAttribute="leadingMargin" id="jiZ-Av-okC"/>
+                            <constraint firstAttribute="trailing" secondItem="hAb-o3-rXN" secondAttribute="trailing" id="mBV-34-Zxe"/>
                             <constraint firstItem="udn-dA-EnK" firstAttribute="leading" secondItem="1So-PW-9tf" secondAttribute="leading" id="p7O-4Y-eax"/>
                             <constraint firstItem="na1-IJ-n2v" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kbe-Rf-fI9" secondAttribute="bottom" constant="8" id="qhL-BP-IA9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7ar-Xk-vq6" secondAttribute="trailing" id="vfh-u3-9cP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="65w-JJ-WVz" id="YkK-LW-q9w"/>
+                        <outlet property="activityView" destination="hAb-o3-rXN" id="jSK-SN-Tig"/>
                         <outlet property="attackLbl" destination="BcB-y3-Xjn" id="idx-Fi-zOm"/>
-                        <outlet property="currentEvoLbl" destination="Xxo-VM-c30" id="smj-8w-NS8"/>
-                        <outlet property="defenseLbl" destination="gKq-xt-HPn" id="gv9-Ba-egh"/>
+                        <outlet property="bgView" destination="JMC-TS-gtn" id="UpE-kk-Lyp"/>
+                        <outlet property="currentEvoImg" destination="Xxo-VM-c30" id="hV2-jy-1pH"/>
+                        <outlet property="defLbl" destination="994-wl-Ne2" id="7Yg-FZ-Jsv"/>
                         <outlet property="descriptionLbl" destination="fcR-fe-inX" id="Lju-7o-FKc"/>
                         <outlet property="evoLbl" destination="Q2b-Vv-QE8" id="jqv-rZ-yMn"/>
                         <outlet property="heightLbl" destination="bPP-0R-gE7" id="6BF-dc-dDy"/>
                         <outlet property="mainImg" destination="0Pa-af-ZHA" id="s75-KQ-Th7"/>
                         <outlet property="nameLbl" destination="cOz-uM-qsz" id="ic9-Yv-8Am"/>
-                        <outlet property="nextEvoLbl" destination="Sod-WM-hTz" id="flu-Ld-LcK"/>
+                        <outlet property="nextEvoImg" destination="Sod-WM-hTz" id="HgI-Vi-GJA"/>
                         <outlet property="pokedexLbl" destination="IEh-Pg-EWU" id="U5m-gN-Czq"/>
-                        <outlet property="typeLbl" destination="kbe-Rf-fI9" id="s5K-0U-uqo"/>
+                        <outlet property="segmentedControl" destination="aNV-4S-uBd" id="FA7-h8-KDv"/>
+                        <outlet property="typeLbl" destination="mcC-T0-UlO" id="0yf-vG-Q4Y"/>
                         <outlet property="weightLbl" destination="prh-4K-4ao" id="0cs-So-MqH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppd-DN-GuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="606"/>
+            <point key="canvasLocation" x="1111" y="592"/>
         </scene>
     </scenes>
     <resources>
